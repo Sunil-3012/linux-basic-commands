@@ -32,6 +32,7 @@ Reverse sorting : `ls -ltr`
    
    -h : Human-readable file sizes.
 
+============================
 ## Creating a directory or removing it
 
 To create a new directory : `mkdir`
@@ -40,6 +41,7 @@ To remove the directory : `rmdir` (to delete empty directory)
 
 To remove directory forcefully : `rm -rf` (DO NOT USE UNTIL NECESSARY)
 
+============================
 ## Creating a file or files
 
 
@@ -92,6 +94,7 @@ to see the difference between 2 files data : `diff file1 file2`
 
 And to see the difference in detail : `diff -u file1 file2`
 
+============================
 ## Searching the files
 
 To find the file : `find /path -name filename/*`
@@ -104,6 +107,7 @@ for case sensitive purpose : `grep -i word filename`
 
 To record the session : `script`
 
+============================
 ## Zip and Unzip
 
 To zip the file : `gzip -k filename` (zips the file and also keeps the original file)
@@ -113,6 +117,106 @@ To unzip the file : `gunzip filename`
 To zip the directory : `tar -czf directory.tar.gz directory/`
 
 to unzip the directory : `tar -xzf directory.tar.gz`
+
+## To download the file : 
+`wget link`
+
+============================
+## To edit the data within the file
+
+To replace the data within the file : `sed -i 's/word1/word2/' filename` (S stands for string)  -- (sed stands for stream editor)
+
+To replace multiple words at the same time : `sed -i 's/word1/word2/g; s/word3/word4/g' filename`
+
+To replace a line : `sed -i '4c goodbye' filename `  
+
+to add a line : `sed -i '4i goodbye' filename`  
+
+To delete a line : `sed -i '4d' filename `    (in this case the 4th line)  
+
+============================
+## Installation
+
+to install any package/service : `yum install -y packagename` example : `yum install -y nginx`
+
+To Start, status, restart and stop : 
+`systemctl status nginx
+systemctl start nginx
+systemctl status nginx
+systemctl restart nginx`
+
+To list all services in Linux : `systemctl list-units --type=service --all`
+
+To find a package/service in linux : `systemctl list-units --type=service --all | grep word`
+
+To Show all running processes with detailed information : `ps aux`
+
+============================
+## System Information commands
+
+To Displays all system information. : `uname -a`        
+
+To Show the current username : `whoami `            
+
+Displays disk space usage in a human-readable format : `df -h`             
+
+Provides the total size of the specified directory : `du -sh directory/`     
+
+Displays memory usage in a human-readable format : `free -h`         
+
+Shows the current system uptime : `uptime`             
+
+Provides detailed CPU information : `lscpu`             
+
+Show operating system information such as distribution name and version : `cat /etc/os-release`  
+
+============================
+## Networking Commands
+
+
+Shows the details of all network interfaces : `ifconfig`         
+
+If not getting executed run this command : `yum install net-tools`
+
+
+
+Downloads “file.txt” from the specified URL : `wget http://example.com/file.txt` 
+
+if you want to download and have with your desired name : `wget -o yourownnamefile.txt URL_of_file`  
+
+Retrieves the content of a webpage from the specified URL : `curl http://example.com`        
+
+Calling API's using CURL command : `curl http://numbersapi.com/random`
+
+
+## To check if the port is open or not
+
+`telnet IP port
+netstat -putan | grep 80 -- see if port 80 is opened or not`
+
+==============================
+## Environment Variable Commands
+
+Environment variables in Linux are dynamic values that can impact how programs and processes run on a computer
+
+`printenv`
+
+Sets the value of an environment variable : export VARIABLE_NAME=value             
+Example: `export name=sunil`    here variable is 'name' and value is 'sunil'  
+
+Displays the value of a specific environment variable : `echo $VARIABLE_NAME`            
+Ex: `echo $name`
+
+To Unset or removes an environment variable : `unset VARIABLE_NAME`           
+Ex: `unset name`
+
+
+
+
+
+
+
+
 
 
 
