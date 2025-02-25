@@ -210,7 +210,83 @@ Ex: `echo $name`
 To Unset or removes an environment variable : `unset VARIABLE_NAME`           
 Ex: `unset name`
 
+================================
+## To Add users/Groups or delete 
 
+to add a user : `useradd`
+
+set passwrod : `passwd username`
+
+To list the users : `cat/etc/passwd`
+
+To switch user : `su - username`
+
+To add a user via another user go to `visudo` and then go to line number 100, :100 --> copy - yy, paste - p
+`root    ALL=(ALL)       ALL
+username    ALL=(ALL)       ALL
+`
+Now you can add user via another user `sudo useradd username2`
+
+To delete user `userdel username`
+
+To add/create the group : `groupadd username`
+
+==================================
+
+## Transferring files from one linux machine to another linux machine
+
+To transfer files from one linux machine to another linux machine we use SCP(Secure Copy protocol)
+
+`scp -i key-pair-name.pem /path/my-file.txt ec2-user@privateip:/path/`
+
+Example : `scp -i MyKey.pem test.zip ec2-user@172.31.6.82:/home/ec2-user/`
+
+for directory recursive : `scp -r -i MyKey.pem test/ ec2-user@172.31.6.82:/home/ec2-user/`
+
+=====================================
+## Example of reverse proxy using nginx and Apache(httpd)
+
+Set up a linux machine with a web server ex:Apache
+
+`sudo -s`
+
+`yum install -y httpd`
+
+`cd /var/www/html`
+
+`vi index.html`
+
+ Add a random html code
+
+launch another ec2 instance with nginx server
+
+`sudo -s`
+
+`yum istall -y nginx`
+
+`cd /etc/nginx/`
+
+`vi nginx.conf`
+ 
+
+add the following code
+
+`location/{
+    proxy_pass http:// Private Ip of the Apache server:/80;
+    }`
+
+
+`systemctl restart nginx`
+
+Open the Public Ip of the nginx serevr
+
+If you get error
+
+`getsebool -a | grep httpd`
+
+`setsebool httpd_can_network_connect on -P`
+
+============================================
 
 
 
